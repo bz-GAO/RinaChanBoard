@@ -1,0 +1,10 @@
+streamlit
+openai
+python-dotenv
+httpx
+PyMuPDF
+python-docx
+python-pptx
+pandas
+Pillow
+tavily-python
