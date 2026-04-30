@@ -20,7 +20,9 @@
 ## 🚀 快速启动
 1. 确保安装了 Python 3.10+ 环境。
 2. 安装依赖：`pip install -r requirements.txt`
-3. 复制 `.env.example` 并重命名为 `.env`，填入你的 API 密钥。
+3. 复制 `.env.example` 并重命名为 `.env`。
+   > ** API 配置说明：** > 本项目默认适配 OFOX 协议，请在 `.env` 中填入 `OFOX_API_KEY` 与 `OFOX_BASE_URL`。
+   > **如果您想使用官方 OpenAI 或其他中转接口：** 请打开 `rina_web.py` 文件，将`init_client`的 `os.getenv("OFOX_API_KEY")`和`os.getenv("OFOX_BASE_URL")` 修改为您自己定义的变量名（如 `OPENAI_API_KEY`,`OPENAI_BASE_URL`）即可运行。
 4. Windows 用户双击 `RinaChanBoard.bat` 即可无黑框静默运行；或在终端执行 `python rina_launch.pyw`。
 
 ---
@@ -40,5 +42,7 @@ This is a local visual interactive desktop assistant built with Streamlit and La
 ## 🚀 Quick Start
 1. Ensure you have a Python 3.10+ environment installed.
 2. Install dependencies: `pip install -r requirements.txt`
-3. Copy `.env.example` to a new file named `.env` and fill in your API keys.
+3. Copy `.env.example` to a new file named `.env`.
+   > **⚠️ API Configuration Note:** > This project uses the OFOX protocol by default. Please fill in `OFOX_API_KEY` and `OFOX_BASE_URL` in your `.env` file.
+   > **If you want to use the official OpenAI API or other proxies:** Please open `rina_web.py` and change the variables `os.getenv("OFOX_API_KEY")` and`os.getenv("OFOX_BASE_URL")`  in `init_client` to your custom variable names (e.g., `OPENAI_API_KEY`,`OPENAI_BASE_URL`).
 4. For Windows users, simply double-click `RinaChanBoard.bat` to run silently in the background; or execute `python rina_launch.pyw`.
