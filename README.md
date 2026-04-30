@@ -1,8 +1,14 @@
-# <center> Rina-Chan-Board (璃奈ちゃんボード) </center>
+# <center> Rina-Chan-Board  </center>
 
-[English Version Below](#english-version)
+<p align="center">
+  <img src="img/Rina_UI.jpeg" width="200" alt="Rina_UI_Preview">
+</p>
 
-这是一个基于 Streamlit 与大语言模型构建的本地可视化交互桌面助手。项目尝试还原了《ラブライブ！虹ヶ咲学園スクールアイドル同好会》（虹咲学园学园偶像同好会）中天王寺璃奈的“璃奈板”设定，并集成了完整的工程化对话系统。
+<p align="center">
+  <a href="#english-version">English Version Below</a>
+</p>
+
+这是一个基于 Streamlit 与大语言模型构建的本地可视化交互桌面助手。项目尝试还原了《ラブライブ！虹ヶ咲学園スクールアイドル同好会》中天王寺璃奈的“璃奈板”设定，并集成了完整的工程化对话系统。
 
 ## 🌟 核心特性
 - **高度定制化人格**：内置系统级 Prompt，严格遵循角色设定输出（支持颜文字情绪表达）。
@@ -20,7 +26,7 @@
 ---
 
 <span id="english-version"></span>
-# <center> Rina-Chan-Board (璃奈ちゃんボード) </center>
+# <center> Rina-Chan-Board  </center>
 
 This is a local visual interactive desktop assistant built with Streamlit and Large Language Models (LLMs). The project attempts to recreate the "Rina-chan Board" used by Rina Tennoji from *Love Live! Nijigasaki High School Idol Club* (ラブライブ！虹ヶ咲学園スクールアイドル同好会), integrating a fully engineered conversational system.
 
@@ -35,4 +41,4 @@ This is a local visual interactive desktop assistant built with Streamlit and La
 1. Ensure you have a Python 3.10+ environment installed.
 2. Install dependencies: `pip install -r requirements.txt`
 3. Copy `.env.example` to a new file named `.env` and fill in your API keys.
-4. For Windows users, simply double-click `RinaChanBoard.bat` to run silently in the background; or execute `python rina_launch.pyw` in the terminal.
+4. For Windows users, simply double-click `RinaChanBoard.bat` to run silently in the background; or execute `python rina_launch.pyw`.
