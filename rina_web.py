@@ -97,10 +97,8 @@ def render_sidebar():
         # ================== 新增：视觉引擎选择 ==================
         image_models = [
             "openai/gpt-image-2",
-            "black-forest-labs/flux-1.1-pro",
-            "google/nano-banana-2-pro",
-            "midjourney/v7",
-            "ideogram/v3"
+            "google/gemini-3.1-flash-image-preview",
+            
         ]
 
         # 🌟 修复关键点：增加安全校验，防止历史缓存或死数据导致崩溃
@@ -115,7 +113,7 @@ def render_sidebar():
         )
         # ========================================================
 
-        
+
         st.divider()
 
         # 布局重置和撤回按钮
