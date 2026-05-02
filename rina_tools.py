@@ -29,8 +29,17 @@ def execute_tool_call(client, function_name, function_args):
         if not prompt:
             return "图片生成失败：缺少 prompt 参数"
         try:
+            # ==== 新增：动态获取 Streamlit 状态中的生图模型 ====
+            try:
+                from streamlit import session_state
+                current_model = session_state.get("image_model", "openai/gpt-image-1.5")
+            except ImportError:
+                # 兼容在非 Streamlit 环境下单独测试 tools 的情况
+                current_model = "openai/gpt-image-1.5"
+            # ====================================================
+
             image_response = client.images.generate(
-                model="openai/gpt-image-2",
+                model=current_model,  # 使用动态读取的模型名
                 prompt=prompt,
                 n=1,
                 size="1024x1024",

@@ -48,7 +48,7 @@ def init_session():
     if "selected_model" not in st.session_state:
         st.session_state.selected_model = "openai/gpt-5.4"
     if "max_tokens" not in st.session_state:
-        st.session_state.max_tokens = 4096
+        st.session_state.max_tokens = 32000
 
     # 撤回编辑模式相关状态
     if "edit_mode" not in st.session_state:
@@ -94,15 +94,28 @@ def render_sidebar():
         )
         st.caption(f"当前协议: OpenAI 兼容适配中...")
 
-        # 使用 key 绑定滑动条
-        st.slider(
-            "单次输出 Token 上限",
-            min_value=1024,
-            max_value=32000,
-            step=1024,
-            key="max_tokens",
-            help="Claude 系列建议控制在 4096 或 8192；若遇到突然停止输出，请调低此数值以适应 API 限制。"
+        # ================== 新增：视觉引擎选择 ==================
+        image_models = [
+            "openai/gpt-image-2",
+            "black-forest-labs/flux-1.1-pro",
+            "google/nano-banana-2-pro",
+            "midjourney/v7",
+            "ideogram/v3"
+        ]
+
+        # 🌟 修复关键点：增加安全校验，防止历史缓存或死数据导致崩溃
+        if "image_model" not in st.session_state or st.session_state.image_model not in image_models:
+            st.session_state.image_model = image_models[0]
+
+        st.selectbox(
+            "🎨 璃奈板视觉引擎:",
+            options=image_models,
+            key="image_model",
+            help="在这里为璃奈板切换不同的生图模型。如果需要精确的文字，请选择 ideogram；需要高质量二次元/重绘，请选择 nano-banana-2-pro。"
         )
+        # ========================================================
+
+        
         st.divider()
 
         # 布局重置和撤回按钮
@@ -248,7 +261,7 @@ def render_content_with_image(content):
         clean_text = content.replace(match.group(0), "")
         if clean_text.strip(): st.markdown(clean_text)
         if img_path and os.path.isfile(img_path):
-            st.image(os.path.abspath(img_path), width="stretch")
+            st.image(os.path.abspath(img_path), use_container_width=True)
     else:
         st.markdown(content)
 
@@ -539,7 +552,7 @@ def main():
                         if match:
                             img_path = (match.group(1) or "").strip()
                             if img_path and os.path.isfile(img_path):
-                                st.image(os.path.abspath(img_path), width="stretch")
+                                st.image(os.path.abspath(img_path), use_container_width=True)
 
                         st.session_state.messages.append({"role": "assistant", "content": final_text})
 
@@ -559,7 +572,7 @@ def main():
                         if match:
                             img_path = (match.group(1) or "").strip()
                             if img_path and os.path.isfile(img_path):
-                                st.image(os.path.abspath(img_path), width="stretch")
+                                st.image(os.path.abspath(img_path), use_container_width=True)
 
                         st.session_state.messages.append({"role": "assistant", "content": final_text})
 
